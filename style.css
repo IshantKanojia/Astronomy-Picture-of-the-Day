@@ -1,0 +1,267 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #0b0d17;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#interactive-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    background: radial-gradient(
+        600px circle at var(--x, 50%) var(--y, 50%),
+        rgba(150, 100, 255, 0.15),
+        transparent 80%
+    );
+    transition: background-position 0.2s ease-out;
+}
+
+.app-header, .content-area {
+    position: relative;
+    z-index: 1;
+}
+
+.app-header {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #30363d;
+}
+
+.app-header h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: #c9d1d9;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.app-header p {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    color: #8b949e;
+    font-style: italic;
+    margin-top: 0;
+}
+
+.date-picker-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.date-picker-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.date-picker-container label {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #c9d1d9;
+}
+
+.date-picker-container input[type="date"] {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+    background-color: #0d1117;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.date-picker-container input[type="date"]:hover {
+    border-color: #3b82f6;
+}
+
+.date-picker-container input[type="date"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+#apod-container {
+    min-height: 500px;
+}
+
+.apod-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.apod-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.apod-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-top: 0;
+    text-align: center;
+}
+
+.apod-date {
+    text-align: center;
+    font-style: italic;
+    color: #8b949e;
+}
+
+.apod-media-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.apod-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.apod-card iframe {
+    width: 100%;
+    height: clamp(300px, 50vw, 500px);
+    border-radius: 8px;
+    border: none;
+}
+
+.apod-explanation {
+    line-height: 1.6;
+}
+
+.apod-copyright {
+    font-style: italic;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #8b949e;
+    margin-top: 1rem;
+}
+
+.share-container {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+#share-button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#share-button:hover {
+    background-color: #2563eb;
+}
+
+.error-message {
+    color: #f87171;
+    text-align: center;
+    padding: 2rem;
+    background-color: #161b22;
+    border: 1px solid #f87171;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#loading-skeleton {
+    opacity: 1;
+    transform: none;
+    background-color: #161b22;
+}
+
+.skeleton-line-title {
+    height: 30px;
+    width: 60%;
+    margin: 0 auto 1rem;
+    background-color: #30363d;
+    border-radius: 4px;
+    animation: pulse-bg 1.5s infinite;
+}
+
+.skeleton-line-date {
+    height: 15px;
+    width: 30%;
+    margin: 0 auto 1.5rem;
+    background-color: #30363d;
+    border-radius: 4px;
+    animation: pulse-bg 1.5s infinite;
+}
+
+.skeleton-media-placeholder {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    background-color: #30363d;
+    border-radius: 8px;
+    animation: pulse-bg 1.5s infinite;
+}
+
+.skeleton-line {
+    height: 18px;
+    width: 100%;
+    background-color: #30363d;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    animation: pulse-bg 1.5s infinite;
+}
+
+.skeleton-line:last-child {
+    width: 80%;
+    margin-bottom: 0;
+}
+
+@keyframes pulse-bg {
+    0% { background-color: #30363d; }
+    50% { background-color: #444c56; }
+    100% { background-color: #30363d; }
+}
+
+@media (max-width: 768px) {
+    .app-header {
+        padding: 2rem 1rem;
+    }
+    .app-header h1 {
+        font-size: 2rem;
+    }
+    
+    .apod-card iframe {
+        height: 300px;
+    }
+
+    .date-picker-container {
+        flex-direction: column;
+    }
+
+    .date-picker-container label {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
