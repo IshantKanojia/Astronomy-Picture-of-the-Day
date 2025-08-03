@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Astronomy Picture of the Day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="interactive-bg"></div>
+
+    <header class="app-header">
+        <h1>NASA Astronomy Picture of the Day</h1>
+        <p>A daily glimpse into the universe, powered by NASA's API.</p>
+    </header>
+
+    <main class="content-area">
+        <div class="date-picker-container">
+            <label for="apod-date">Select a Date: </label>
+            <input type="date" id="apod-date">
+        </div>
+
+        <div id="error-message-container" style="display: none;"></div>
+
+        <div id="apod-container">
+            <div id="loading-skeleton" class="apod-card">
+                <div class="skeleton-line-title"></div>
+                <div class="skeleton-line-date"></div>
+                <div class="skeleton-media-placeholder"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
